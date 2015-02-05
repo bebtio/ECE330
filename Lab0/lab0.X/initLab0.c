@@ -13,7 +13,7 @@
 
 // GLobal Variables
  volatile unsigned int elapsed_time;
- volatile int currentState;
+ volatile int current_State_Updated_To;
  volatile int previousState;
 
 void initLEDs(){
