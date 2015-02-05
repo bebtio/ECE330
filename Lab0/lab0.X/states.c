@@ -2,6 +2,11 @@
 #include "initLab0.h"
 #include "p24FJ64GA002.h"
 
+// This will prevent the elapsed time from overflowing if the switch is 
+// held down for too long
+#define greater_than_two_sec 2001
+
+/*****************************************************************************/
 
 void led4State()
 {
@@ -40,19 +45,16 @@ void led7State()
 
 void buttonPressedState()
 {
-    
-
     if(PORTBbits.RB5 == 1)
     {  
         currentState = changeState;
     }
     else
     {
-        if(elapsed_time > 2000)
+        if(elapsed_time > two_seconds)
         {
-            elapsed_time == 2001;
+            elapsed_time == greater_than_two_sec;
         }
-        
     }
 }
 
@@ -100,6 +102,8 @@ void changeStateState()
     }
 }
 
+/*****************************************************************************/
+
 void updateTimeState()
 {
     elapsed_time+= 1;
@@ -113,6 +117,9 @@ void updateTimeState()
         currentState = changeState;
     }
 }
+
+/*****************************************************************************/
+
 
 
 
