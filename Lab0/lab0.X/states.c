@@ -96,6 +96,8 @@ void changeStateState()
             current_State_Updated_To = led4;
         }
     }
+    
+    elapsed_time = 0;
 }
 
 /*****************************************************************************/
