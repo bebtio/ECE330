@@ -2,9 +2,9 @@
 
 // ******************************************************************************************* //
 //
-// File:         lab0.c
-// Date:
-// Authors:
+// File:            lab0.c
+// Date:            04Feb2015 
+// Authors:         Alberto Heras
 //
 // Description:  Lab 0 assignment for ECE 372 Spring 2015.
 // ******************************************************************************************* //
@@ -13,7 +13,6 @@
 #include "initLab0.h"
 #include "states.h"
 #include <stdio.h>
-
 
 // ******************************************************************************************* //
 // Configuration bits for CONFIG1 settings.
@@ -28,10 +27,10 @@ _CONFIG1( JTAGEN_OFF & GCP_OFF & GWRP_OFF &
 _CONFIG2( IESO_OFF & SOSCSEL_SOSC & WUTSEL_LEG & FNOSC_PRIPLL & FCKSM_CSDCMD & OSCIOFNC_OFF &
           IOL1WAY_OFF & I2C1SEL_PRI & POSCMOD_XT )
 
-/***************************************************************************/
+/*********************************************************************************************/
 
 
-/***************************************************************************/
+/*********************************************************************************************/
 
 int main(void)
 {
@@ -42,17 +41,15 @@ int main(void)
     initSW1();
 
     // This will let me change the value of state, from anywhere
-    
-    
 
-     currentState = led4;
+     current_State_Updated_To = led4;
      previousState = led4;
 
     while(1)
     {
 
         //Use a switch statement to define the behavior based on the state
-        switch(currentState)
+        switch(current_State_Updated_To)
         {
             case led4: led4State(); break;
             case led5: led5State(); break;
@@ -66,28 +63,29 @@ int main(void)
     return 0;
 }
 
-/***************************************************************************/
+/*********************************************************************************************/
 
 void _ISR _CNInterrupt(void)
 {
-    IFS1bits.CNIF = 0;
-    if(PORTBbits.RB5 == 0)
+    IFS1bits.CNIF = DOWN;
+    
+    if(PORTBbits.RB5 == PRESSED)
     {
-        currentState = button_pressed;
+        current_State_Updated_To = button_pressed;
     }
 }
 
-/***************************************************************************/
+/*********************************************************************************************/
 
+void _ISR _T1Interrupt()
+{
+    IFS0bits.T1IF = DOWN;
 
-/***************************************************************************/
-void _ISR _T1Interrupt(){
-
-    IFS0bits.T1IF = 0;
-
-    if(PORTBbits.RB5 == 0)
+    if(PORTBbits.RB5 == PRESSED)
     {
-        currentState = updateTime;
+        current_State_Updated_To = updateTime;
     }
 }
+
+/*********************************************************************************************/
 
