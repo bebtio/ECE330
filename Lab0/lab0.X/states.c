@@ -45,9 +45,9 @@ void led7State()
 
 void buttonPressedState()
 {
-    if(PORTBbits.RB5 == 1)
+    if(PORTBbits.RB5 == RELEASED)
     {  
-        currentState = changeState;
+        current_State_Updated_To = changeState;
     }
     else
     {
@@ -66,38 +66,38 @@ void changeStateState()
     {
         if(previousState == led4)
         {
-            currentState = led7;
+            current_State_Updated_To = led7;
         }
         else if(previousState == led5 )
         {
-            currentState = led4;
+            current_State_Updated_To = led4;
         }
         else if(previousState == led6 )
         {
-            currentState = led5;
+            current_State_Updated_To = led5;
         }
         else if(previousState == led7 )
         {
-            currentState = led6;
+            current_State_Updated_To = led6;
         }
     }
     else
     {
         if(previousState == led4)
         {
-            currentState = led5;
+            current_State_Updated_To = led5;
         }
         else if(previousState == led5 )
         {
-            currentState = led6;
+            current_State_Updated_To = led6;
         }
         else if(previousState == led6 )
         {
-            currentState = led7;
+            current_State_Updated_To = led7;
         }
         else if(previousState == led7 )
         {
-            currentState = led4;
+            current_State_Updated_To = led4;
         }
     }
 }
@@ -108,13 +108,13 @@ void updateTimeState()
 {
     elapsed_time+= 1;
 
-    if(PORTBbits.RB5 == 0)
+    if(PORTBbits.RB5 == PRESSED)
     {
-        currentState = button_pressed;
+        current_State_Updated_To = button_pressed;
     }
     else
     {
-        currentState = changeState;
+        current_State_Updated_To = changeState;
     }
 }
 
