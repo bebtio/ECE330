@@ -1,16 +1,15 @@
 /* 
-* File:   initLab0.h
-* Author: 
 *
-* Created on December 27, 2014, 1:31 PM
+* File:     initLab0.h
+* Author:   Alberto Heras 
+* Date:     04Feb2015     
+* 
 */
 
 #ifndef INITLAB0_H
 #define	INITLAB0_H
 
 typedef enum stateTypeEnum{
-
-    //TODO: Define states by name
 
     led4 = 4,
     led5,
@@ -24,7 +23,7 @@ typedef enum stateTypeEnum{
 
 // Global Variables
 extern volatile unsigned int elapsed_time;
-extern volatile int currentState;
+extern volatile int current_State_Updated_To;
 extern volatile int previousState;
 
 //Use defines for pin settings to make your code
@@ -34,11 +33,15 @@ extern volatile int previousState;
 #define LED7 LATBbits.LATB12
 #define OFF 1;
 #define ON 0;
+#define PRESSED 0;
+#define RELEASED 1;
+#define UP 1;
+#define DOWN 0;
 
+// Functions that will be used
 void initLEDs();
 void initSW1();
 void initTimer1();
-
 void turnOnLED(int led);
 
 #endif	/* INITLAB0_H */
