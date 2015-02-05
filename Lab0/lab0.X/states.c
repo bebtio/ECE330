@@ -10,7 +10,6 @@
 
 void led4State()
 {
-    elapsed_time = 0;
     previousState = 4;
     turnOnLED(4);
 }
@@ -18,7 +17,6 @@ void led4State()
 /*****************************************************************************/
 void led5State()
 {
-    elapsed_time = 0;
     previousState = 5;
     turnOnLED(5);
 }
@@ -27,7 +25,6 @@ void led5State()
 
 void led6State()
 {
-    elapsed_time = 0;
     previousState = 6;
     turnOnLED(6);
 }
@@ -36,7 +33,6 @@ void led6State()
 
 void led7State()
 {
-    elapsed_time = 0;
     previousState = 7;
     turnOnLED(7);
 }
